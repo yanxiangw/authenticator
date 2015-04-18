@@ -1,3 +1,10 @@
-h1
-  | Hello Authenticator
-  = icon('sign-in')
+- if user_signed_in?
+  h1 Welcome to authenicator app, #{current_user.email}
+  h3
+    = link_to destroy_user_session_path, method: :delete do
+      | log out
+- else
+  h1 Welcome to authenicator app
+  h3
+    = link_to new_user_session_path do
+      | log in
